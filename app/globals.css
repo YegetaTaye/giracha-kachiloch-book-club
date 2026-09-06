@@ -1,0 +1,98 @@
+@import "tailwindcss";
+
+:root {
+  --color-parchment: #f3ece1;
+  --color-parchment-dim: #eae0cd;
+  --color-ink: #2b1b12;
+  --color-gold: #b8863b;
+  --color-terracotta: #7a2e1d;
+  --color-evergreen: #3a4f3a;
+}
+
+@theme inline {
+  --color-parchment: var(--color-parchment);
+  --color-parchment-dim: var(--color-parchment-dim);
+  --color-ink: var(--color-ink);
+  --color-gold: var(--color-gold);
+  --color-terracotta: var(--color-terracotta);
+  --color-evergreen: var(--color-evergreen);
+
+  --font-display-am: var(--font-noto-serif-ethiopic);
+  --font-body-am: var(--font-noto-sans-ethiopic);
+  --font-display-en: var(--font-playfair);
+  --font-body-en: var(--font-lora);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-parchment);
+  color: var(--color-ink);
+}
+
+/* subtle paper grain so the parchment background doesn't read as a flat CSS color */
+.bg-paper-grain {
+  background-image: radial-gradient(
+      circle at 1px 1px,
+      rgba(43, 27, 18, 0.055) 1px,
+      transparent 0
+    );
+  background-size: 22px 22px;
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+@keyframes reveal-up {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.reveal {
+  opacity: 0;
+}
+
+.reveal.is-visible {
+  animation: reveal-up 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    animation: none;
+  }
+}
+
+/* Archive marquee (Past Nights): the track holds two copies of the list
+   back to back, and translating by exactly -50% loops it seamlessly. */
+@keyframes marquee-rtl {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.marquee-track {
+  animation: marquee-rtl 42s linear infinite;
+}
+
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none;
+  }
+}
