@@ -1,8 +1,8 @@
-# ግራጫ ቃጭሎች · Gracha Qachlotch
+# ግራጫ ቃጭሎች · Giracha Kachiloch
 
 ## About the Community
 
-Gracha Qachlotch, or **House of Reading**, is a reading community in Bishoftu, Ethiopia. The owner brings writers, poets, musicians, and readers together around poetry, acoustic music, books, and the Ethiopian coffee ceremony.
+ግራጫ ቃጭሎች የንባብ ቤት, is a reading community in Bishoftu, Ethiopia. The owner brings writers, poets, musicians, and readers together around poetry, acoustic music, books, and the Ethiopian coffee ceremony.
 
 The website documents and supports this work. It introduces the community, preserves memories from gatherings, presents the bookshelf, and helps people learn about future events. The site is available in **Amharic and English**.
 
@@ -22,13 +22,13 @@ This is a community website, not a ticketing or payment platform.
 
 ## Website Sections
 
-| Section | Purpose |
-|---|---|
-| Home | Explains the mission, shows the next gathering, and shares contact details |
-| Guests | Introduces poets and writers who have joined the community |
-| Books | Displays the community bookshelf by category |
-| Archive | Preserves past gatherings and shared moments |
-| Community | Helps visitors follow the work and receive updates |
+| Section   | Purpose                                                                    |
+| --------- | -------------------------------------------------------------------------- |
+| Home      | Explains the mission, shows the next gathering, and shares contact details |
+| Guests    | Introduces poets and writers who have joined the community                 |
+| Books     | Displays the community bookshelf by category                               |
+| Archive   | Preserves past gatherings and shared moments                               |
+| Community | Helps visitors follow the work and receive updates                         |
 
 ## Updating the Website
 

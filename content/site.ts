@@ -3,7 +3,7 @@
 
 export const site = {
   nameAm: "ግራጫ ቃጭሎች",
-  nameEn: "Gracha Qachlotch",
+  nameEn: "Giracha Kachiloch",
   // Public origin, used to turn the OG image into the absolute URL crawlers
   // require. Set NEXT_PUBLIC_SITE_URL=https://your-domain at deploy time. Left
   // unset, Next.js falls back to the deployment URL on Vercel and to
@@ -32,18 +32,18 @@ export const site = {
     // have a verified lat/lng for the venue — Google resolves the search.
     mapQuery: "Carmel Kitchen, Bishoftu, Ethiopia",
   },
-  email: "hello@grachabookclub.example",
+  email: "hello@girachabookclub.example",
   social: {
-    instagram: "https://instagram.com/gracha.bookclub",
-    telegram: "https://t.me/grachabookclub",
+    instagram: "https://instagram.com/giracha.bookclub",
+    telegram: "https://t.me/girachabookclub",
   },
   // A specific next date isn't confirmed yet — this only states the usual
   // recurring pattern seen across past posters (Saturdays, 11:30, at the
   // venue above). Replace with a firm date/theme once one is announced.
   nextGathering: {
     status: "tbd" as const,
-    patternAm: "ምሽቶቻችን አብዛኛውን ጊዜ ቅዳሜ፣ ከጠዋቱ 11:30 ላይ ይካሄዳሉ።",
-    patternEn: "Gatherings are usually held on Saturdays at 11:30 AM.",
+    patternAm: "ምሽቶቻችን አብዛኛውን ጊዜ ቅዳሜ፣ 11:30 ላይ ይካሄዳሉ።",
+    patternEn: "Gatherings are usually held on Saturdays at 03:30 PM.",
     dateAm: "ቀጣዩ ቀን በቅርቡ ይገለጻል",
     dateEn: "Date to be announced",
     themeAm: "ገጣሚዎች እና ደራሲያን በድጋሚ ይሰበሰባሉ",

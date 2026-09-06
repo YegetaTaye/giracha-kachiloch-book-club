@@ -51,7 +51,7 @@ export const books: Book[] = bookCategories.flatMap(({ key }) =>
     slug: `${key}-${code}`,
     titleAm: `መጽሐፍ ${code.toUpperCase()}`,
     titleEn: `Shelf book ${code.toUpperCase()}`,
-    authorName: "Gracha Book Club collection",
+    authorName: "Giracha Kachiloch House of Reading collection",
     cover: `/book-shelf/${key}/${code}.jpg`,
     category: key,
   })),

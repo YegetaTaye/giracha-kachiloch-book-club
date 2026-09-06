@@ -94,7 +94,7 @@ export const dictionary = {
       eyebrow: "About",
       heading: "The Ceremony",
       origin:
-        "Gracha Book Club is a night that brings poetry, live music, and coffee to the same table. It began with a simple question: where can our stories be given the room they deserve? The answer became a coffee gathering — poetry read aloud around it, a guitar humming underneath, words rising like steam.",
+        "Giracha Kachiloch House of Reading is a night that brings poetry, live music, and coffee to the same table. It began with a simple question: where can our stories be given the room they deserve? The answer became a coffee gathering — poetry read aloud around it, a guitar humming underneath, words rising like steam.",
       programHeading: "The Program",
       programIntro: "Every night moves through three parts:",
       segments: [
@@ -148,7 +148,7 @@ export const dictionary = {
       eyebrow: "Our Community",
       heading: "Writers & Poets",
       intro:
-        "Poets, authors, and journalists who have joined Gracha Book Club nights — a few of the voices who have shared their words with us.",
+        "Poets, authors, and journalists who have joined Giracha Kachiloch House of Reading nights — a few of the voices who have shared their words with us.",
     },
     booksPage: {
       eyebrow: "Our Bookshelf",
