@@ -2,7 +2,7 @@ export type Lang = "am" | "en";
 
 export const dictionary = {
   am: {
-    nav: { home: "መግቢያ", guests: "ገጣሚያን እና ደራሲያን", books: "መጽሐፍት" },
+    nav: { home: "መግቢያ", guests: "ገጣሚያን እና ደራሲያን", books: "መጽሐፍት", support: "ድጋፍ" },
     hero: {
       cta: "ቀጣዩን ምሽት ይከታተሉ",
     },
@@ -75,6 +75,38 @@ export const dictionary = {
       heading: "መጽሐፍት",
       intro: "ክለቡ በእጁ ያሉትን መጽሐፍት በየዘርፋቸው ይመልከቱ።",
     },
+    supportPage: {
+      eyebrow: "የንባብ ቤቱን ይደግፉ",
+      heading: "አብረን እንገንባ",
+      intro:
+        "ግራጫ ቃጭሎች ለማኅበረሰቡ የተፈጠረ የማኅበረሰብ ተነሳሽነት ነው። ለንባብ፣ ለፈጠራ፣ ለባህል እና ለጋራ ውይይት የሚያምኑ ሰዎች በሚሰጡት ልግስና፣ ጊዜ፣ ክህሎት፣ መጽሐፍ እና ሀሳብ እንደጋፋለን።",
+      message:
+        "ድጋፍዎ ስብሰባዎቻችንን እንድንቀጥል፣ ብዙ ሰዎችን እንድናገናኝ፣ ሥራችንን እንድንመዘግብ እና ለጸሐፊዎች፣ ለአንባቢዎች፣ ለሙዚቀኞች እና ለመላው ማኅበረሰብ አቀባበል ያለው ቦታ እንድንፈጥር ይረዳናል።",
+      note: "ሁሉም ድጋፍ ትርጉም አለው።",
+      financial: {
+        title: "በገንዘብ ይደግፉ",
+        body: "በባንክ፣ በሞባይል ገንዘብ ወይም በቴሌብር ለመደገፍ ያግኙን።",
+        action: "ከቡድኑ ጋር ይገናኙ",
+      },
+      skills: {
+        title: "ክህሎትዎን ይስጡ",
+        body: "ፎቶግራፍ፣ ቪዲዮ ምርት፣ ዲዛይን ወይም ሌላ ክህሎት በማጋራት ይርዱን።",
+        action: "ያግኙን",
+      },
+      books: {
+        title: "መጽሐፍ ያበርክቱ",
+        body: "ለጋራ መደርደሪያችን አዲስ ወይም በጥሩ ሁኔታ ያሉ መጽሐፍትን ያካፍሉ።",
+        action: "ስለ መጽሐፍ ለመነጋገር",
+      },
+      materials: {
+        title: "የምርት ዕቃዎች",
+        body: "ካሜራ፣ ማይክሮፎን፣ ህትመት ወይም ሌላ የምርት ዕቃ ያበርክቱ።",
+        action: "የሚያስፈልገውን ይጠይቁ",
+      },
+      closing: "በስልክ ወይም በማኅበራዊ ገጾቻችን መልዕክት ይላኩልን።",
+      instagram: "Instagram ላይ ያግኙን",
+      telegram: "Telegram ላይ ያግኙን",
+    },
     footer: {
       location: "ቢሾፍቱ፣ ኢትዮጵያ",
       rights: "ሁሉም መብቶች የተጠበቁ ናቸው።",
@@ -82,7 +114,7 @@ export const dictionary = {
     langToggle: "English",
   },
   en: {
-    nav: { home: "Home", guests: "Writers & Poets", books: "Books" },
+    nav: { home: "Home", guests: "Writers & Poets", books: "Books", support: "Support" },
     hero: {
       cta: "Follow the next gathering",
     },
@@ -155,6 +187,38 @@ export const dictionary = {
       heading: "Books",
       intro:
         "Browse the books currently in the club's collection, arranged by category.",
+    },
+    supportPage: {
+      eyebrow: "Support the House",
+      heading: "Support the House",
+      intro:
+        "Gracha Qachlotch is a community initiative created for the community. We depend on the generosity, time, skills, books, and ideas of people who believe in reading, creativity, culture, and shared conversation.",
+      message:
+        "Your support helps us continue our gatherings, reach more people, document our work, and create welcoming spaces for writers, readers, musicians, and the wider community.",
+      note: "Every kind of support matters.",
+      financial: {
+        title: "Give financially",
+        body: "Contact us for bank, mobile-money, and Telebirr support options.",
+        action: "Contact the team",
+      },
+      skills: {
+        title: "Share your skills",
+        body: "Help with photography, video production, design, or another skill you can offer.",
+        action: "Get in touch",
+      },
+      books: {
+        title: "Give books",
+        body: "Share new or well-kept books for our community bookshelf.",
+        action: "Talk to us about books",
+      },
+      materials: {
+        title: "Give production materials",
+        body: "Support our outreach with cameras, microphones, printing, or other useful materials.",
+        action: "Ask about current needs",
+      },
+      closing: "Call us or send a message through our social pages to find the best way to help.",
+      instagram: "Reach us on Instagram",
+      telegram: "Reach us on Telegram",
     },
     footer: {
       location: "Bishoftu, Ethiopia",

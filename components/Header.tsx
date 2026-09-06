@@ -32,6 +32,11 @@ export function Header() {
     { href: "/", label: t.nav.home },
     { href: "/guests", label: t.nav.guests },
     { href: "/books", label: t.nav.books },
+    {
+      href: "/support",
+      label: t.supportPage.eyebrow,
+      mobileLabel: t.nav.support,
+    },
   ];
 
   const positionClasses = isHome ? "fixed inset-x-0 top-0" : "sticky top-0";
@@ -106,7 +111,7 @@ export function Header() {
                 active ? "text-gold" : "text-ink/70"
               }`}
             >
-              {link.label}
+              {"mobileLabel" in link ? link.mobileLabel : link.label}
             </Link>
           );
         })}
