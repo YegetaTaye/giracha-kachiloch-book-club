@@ -85,7 +85,7 @@ spacing:
   grid-gap-lg: "48px"
   section: "80px"
   section-lg: "112px"
-  tibeb: "20px"
+  tibeb: "32px"
 components:
   button-stamp:
     backgroundColor: "{colors.terracotta}"
@@ -143,8 +143,8 @@ components:
     textColor: "#ffffff"
     padding: "16px 24px"
   tibeb-band:
-    backgroundColor: "{colors.ink}"
-    height: "20px"
+    backgroundColor: "#f0b929"
+    height: "32px"
 ---
 
 # Design System: ግራጫ ቃጭሎች · Giracha Kachiloch
@@ -175,26 +175,26 @@ Amharic leads and English is complete. Both scripts share one stack per role (Ar
 A warm house palette: espresso inks, parchment grounds, two golds, and one terracotta.
 
 ### Primary
-- **Espresso Ink** (ink): the dark field (home hero, programme screen, PageIntro bands, past-nights band, support hero), the tibeb ground, body text and headings on parchment, the active desktop nav pill, the solid button, and the backdrop of posters, sheets and portraits.
+- **Espresso Ink** (ink): the dark field (home hero, programme screen, PageIntro bands, past-nights band, support hero), body text and headings on parchment, the active desktop nav pill, the solid button, and the backdrop of posters, sheets and portraits.
 - **Deep Ink** (ink-deep): the footer, poster frames, the lightbox scrim at 95%, and the hover of the ink button.
 
 ### Secondary
-- **Terracotta** (terracotta): the Telegram action (the info bar stamp), the mobile nav's active underline, the full field of the home page's closing section, and the small woven diamonds in the tibeb band.
+- **Terracotta** (terracotta): the Telegram action (the info bar stamp), the mobile nav's active underline, the full field of the home page's closing section.
 - **Pressed Terracotta** (terracotta-pressed): hover state of every terracotta stamp. Currently a literal in the components rather than a custom property.
 
 ### Tertiary
-- **Old Gold** (gold): the house name over the hero video; the primary action on ink fields (with ink text); the "where" block of the info bar; the 2px programme rules on ink (50% for the coffee line); the tibeb's rules and diamonds; text selection with ink text; the top stop of the portrait wash.
+- **Old Gold** (gold): the house name over the hero video; the primary action on ink fields (with ink text); the "where" block of the info bar; the 2px programme rules on ink (50% for the coffee line); text selection with ink text; the top stop of the portrait wash.
 - **Deep Gold** (gold-deep): the "when" block of the info bar with parchment text; guest role lines; hover colour for shelf category names.
 
 ### Neutral
-- **Parchment** (parchment): page ground, the translucent header (95% with blur), text on ink and terracotta, the lightbox close pill, the Telegram pill inside the terracotta close, the hover of the gold action, and the tibeb's small centre diamonds.
+- **Parchment** (parchment): page ground, the translucent header (95% with blur), text on ink and terracotta, the lightbox close pill, the Telegram pill inside the terracotta close, the hover of the gold action.
 - **Dim Parchment** (parchment-dim): defined and reserved; unused in the shipped components.
 - **Sand** (sand): secondary text on ink (intros, programme bodies, footer meta).
 - **Cream** (cream): secondary text on terracotta (venue detail, body, Instagram link in the home close).
 - **Soft Ink** (ink-soft): counts, English name lines, the header tagline and closing notes on parchment.
 
 ### Named Rules
-**The One Stamp Rule.** Terracotta marks the Telegram action. It appears as the stamp in the info bar and as the field of the home close that ends on that action; there the Telegram button flips to a parchment pill with terracotta text. Outside the action, terracotta appears only as the woven accent inside the tibeb band. Never use it for headings, outlines or a second, unrelated action.
+**The One Stamp Rule.** Terracotta marks the Telegram action. It appears as the stamp in the info bar and as the field of the home close that ends on that action; there the Telegram button flips to a parchment pill with terracotta text. Outside the action it does not appear; the tibeb's red is the flag red, a separate colour. Never use it for headings, outlines or a second, unrelated action.
 
 **The Gold-on-Ink Rule.** A primary action sitting directly on an ink field is a gold pill with ink text, hovering to parchment. Terracotta lacks the contrast to stand out against ink, so it is not used for buttons there.
 
@@ -241,7 +241,7 @@ Flat. There are no box shadows anywhere in the build. Depth comes from tonal lay
 
 ## Shapes
 
-Two shape languages, deliberately split. Text structure is rectilinear: 2px rules (ink on parchment, gold on ink) open a list or a guest caption, 1px hairlines at 20% ink divide items, and nothing encloses text. Images and colour blocks are soft: posters, shelf sheets, guest portraits and the info bar at 1rem, feature images (shelf preview, support photo) at 1.75rem, the lightbox image at 0.5rem. Every interactive control is a full pill or circle (nav links, buttons, language toggle, category chips, 48px round controls). The logo mark sits in a circle. The tibeb is the one patterned edge: a repeating 48 by 20px woven tile of rules and diamonds.
+Two shape languages, deliberately split. Text structure is rectilinear: 2px rules (ink on parchment, gold on ink) open a list or a guest caption, 1px hairlines at 20% ink divide items, and nothing encloses text. Images and colour blocks are soft: posters, shelf sheets, guest portraits and the info bar at 1rem, feature images (shelf preview, support photo) at 1.75rem, the lightbox image at 0.5rem. Every interactive control is a full pill or circle (nav links, buttons, language toggle, category chips, 48px round controls). The logo mark sits in a circle. The tibeb is the one patterned edge: a repeating 48 by 32px woven tile of stripes, sawtooth, stepped crosses and diamonds.
 
 ## Components
 
@@ -260,7 +260,7 @@ Pills, confident and few.
 Sticky parchment header (95% with blur) with ink text over a 10% ink hairline. Logo roundel plus wordmark (title role) over the tagline in soft ink. Desktop links are nav-size pills: active is ink with parchment text, others ink at 80% with a 5% ink hover wash. Below 768px the links move to a horizontally scrolling row under a hairline, marked active by a 2px terracotta underline. The language toggle is an outline pill (ink at 20%, full ink on hover) whose own lang attribute matches the language it switches to.
 
 ### Tibeb Band (signature)
-A 20px woven band, decorative and hidden from assistive tech, repeating a 48px tile horizontally: an ink ground, two thin gold rules near its edges, alternating gold and terracotta diamonds with contrasting centres, and small parchment diamonds between. It sits under the home hero, under every PageIntro band, under the support hero, and at the top of the footer. Use it only where an ink opening hands over to the next section, or to open the footer; it never divides parchment sections from each other.
+A 32px woven band in the manner of a habesha kemis or netela border, decorative and hidden from assistive tech, repeating a 48px tile horizontally. Its colours are the warm green, yellow and red of the Ethiopian flag (#3a7d2c, #f0b929, #c8321e), used only here. Top and bottom carry mirrored stripe stacks (green, yellow, red) with thin cream separators. The middle row has a yellow ground edged by green sawtooth and repeats red stepped crosses with cream hearts and arm tips, green diamonds with cream and red centres, and red diamonds between them. Cream is kept to small accents. It sits under the home hero, under every PageIntro band, under the support hero, and at the top of the footer. Use it only where an ink opening hands over to the next section, or to open the footer; it never divides parchment sections from each other.
 
 ### Info Bar (signature)
 The strip from the foot of every club poster: a rounded 1rem band of three blocks, deep gold "when" with parchment text and a drawn clock, gold "where" with ink text and a drawn pin, and the terracotta Telegram stamp. Three columns from 640px, stacked below. Icons are 36px stroke drawings at 2px weight.
@@ -293,7 +293,8 @@ Printed shelf sheets at 2:3 in rounded ink panels with the title below, opening 
 - **Do** give any moving element a pause control, pause it on hover, touch and focus, and stop it under reduced motion.
 
 ### Don't:
-- **Don't** use terracotta for anything but the Telegram action, the close that ends on it, and the tibeb's woven accent.
+- **Don't** use terracotta for anything but the Telegram action and the close that ends on it.
+- **Don't** use the tibeb's flag green, yellow or red anywhere outside the tibeb band.
 - **Don't** put a terracotta button on an ink field.
 - **Don't** wrap text in card boxes, borders or tinted containers; the info bar is the only colour-block strip.
 - **Don't** add box shadows or floating elevation.

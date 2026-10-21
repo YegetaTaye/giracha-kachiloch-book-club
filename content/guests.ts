@@ -36,6 +36,18 @@ export type Guest = {
 // real copy is supplied — replace rather than invent them.
 export const guests: Guest[] = [
   {
+    slug: "bedilu-wakjira",
+    nameAm: "ዶ/ር በድሉ ዋቅጅራ",
+    nameEn: "Dr. Bedilu Wakjira",
+    roleAm: "ደራሲ",
+    roleEn: "Author",
+    image: "/images/portraits-web/bedilu-wakjira.jpg",
+    poster: "/images/guests/bedilu-wakjira.jpg",
+    imageSource:
+      "https://awibethiopia.org/wp-content/uploads/2025/07/Dr.-Bedilu-Wakjira-683x1024.jpg",
+    imageConfidence: "high",
+  },
+  {
     slug: "endalegetachew-kebede",
     nameAm: "ደራሲ እንዳለጌታ ከበደ (ዶ/ር)",
     nameEn: "Endalegetachew Kebede, PhD",
