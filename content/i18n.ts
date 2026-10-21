@@ -2,110 +2,119 @@ export type Lang = "am" | "en";
 
 export const dictionary = {
   am: {
-    nav: { home: "መግቢያ", guests: "ገጣሚያን እና ደራሲያን", books: "መጽሐፍት", support: "ድጋፍ" },
-    hero: {
-      cta: "ቀጣዩን ምሽት ይከታተሉ",
+    nav: {
+      home: "መግቢያ",
+      guests: "ገጣሚያን እና ደራሲያን",
+      books: "መጽሐፍት",
+      support: "ድጋፍ",
+      supportLong: "የንባብ ቤቱን ይደግፉ",
     },
-    nextGathering: {
-      eyebrow: "ቀጣዩ ስብሰባ",
-      notify: "አሳውቁኝ",
-    },
-    about: {
-      eyebrow: "ስለ እኛ",
-      heading: "ሥነ ሥርዓቱ",
-      origin:
-        "ግራጫ ቃጭሎች ግጥም፣ ሙዚቃ እና ቡና በአንድ ላይ የሚያገናኝ ምሽት ነው። ሁሉም ነገር የተጀመረው ቀላል ጥያቄ ይዞ ነው፦ ታሪኮቻችንን በሚገባ ልናከብርበት የምንችለው ቦታ የት ነው? መልሱ የቡና ማዕድ ሆነ — በዙሪያው ግጥም የሚነበብበት፣ ጊታር የሚደመጥበት፣ ቃላት ልክ እንደ ጭስ ወደ ላይ የሚወጡበት።",
-      programHeading: "የምሽቱ ፕሮግራም",
-      programIntro: "እያንዳንዱ ምሽት ሦስት ክፍሎችን ይይዛል፦",
-      segments: [
+    programme: {
+      heading: "በምሽቱ ምን ይካሄዳል",
+      parts: [
         {
-          key: "readings",
-          title: "ንባብ እና ውይይት",
-          body: "እንግዳ ደራሲያን ስራቸውን ያካፍላሉ፣ ከተሰብሳቢው ጋር ቀጥታ ውይይት ይደረጋል።",
+          key: "discussion",
+          title: "ከእንግዳ ደራሲ ጋር ውይይት",
+          body: "እንግዳ ደራሲ ወይም ገጣሚ ስራቸውን ያካፍላሉ፤ ከታዳሚው ጋር በግልጽ ይወያያሉ። የእያንዳንዱ ምሽት ዋና ክፍል ነው።",
         },
         {
-          key: "poetry",
-          title: "ግጥም",
-          body: "ገጣሚዎች ስንኞቻቸውን ጮክ ብለው ያነባሉ፤ ቃላቱ በክፍሉ ውስጥ ይሰራጫሉ።",
+          key: "members",
+          title: "የአባላት መድረክ",
+          body: "አባላት ግጥሞቻቸውን እና የራሳቸውን ጽሑፍ ያነባሉ። አዲስ መጪዎችም ማንበብ ይችላሉ።",
         },
         {
-          key: "acoustic",
-          title: "አኮስቲክ ሙዚቃ",
-          body: "ጊታር በንባቦች መካከል ይደመጣል፣ ምሽቱን በሙዚቃ ያሞቀዋል።",
+          key: "songs",
+          title: "ዘፈን እና ሙዚቃ",
+          body: "በንባቦች መካከል ዘፈን እና የጊታር ሙዚቃ።",
         },
       ],
+      coffee: "ቡና በምሽቱ ሁሉ ይቀርባል።",
+    },
+    info: {
+      usually: "ብዙውን ጊዜ",
+      when: "ቅዳሜ · 11:30",
+      where: "የት",
+    },
+    about: {
+      heading: "ታሪካችን",
+      origin:
+        "ግራጫ ቃጭሎች ግጥም፣ ሙዚቃ እና ቡና በአንድ ላይ የሚያገናኝ ምሽት ነው። ሁሉም ነገር የተጀመረው ቀላል ጥያቄ ይዞ ነው፦ ታሪኮቻችንን በሚገባ ልናከብርበት የምንችለው ቦታ የት ነው? መልሱ የቡና ማዕድ ሆነ — በዙሪያው ግጥም የሚነበብበት፣ ጊታር የሚደመጥበት፣ ቃላት ልክ እንደ ጭስ ወደ ላይ የሚወጡበት።",
+      photoCaption: "Carmel Kitchen፣ ቢሾፍቱ",
     },
     pastNights: {
-      eyebrow: "ከመዝገብ ቤታችን",
       heading: "ያለፉ ምሽቶች",
-      seeAll: "ሁሉንም ይመልከቱ",
+      intro: "ከዚህ በፊት የተገኙ እንግዶች ፖስተሮች። ፖስተሩን በሙሉ መጠን ለማየት ይጫኑ።",
+      prev: "ቀዳሚ ፖስተሮች",
+      next: "ቀጣይ ፖስተሮች",
+      pause: "እንቅስቃሴውን አቁም",
+      play: "እንቅስቃሴውን ቀጥል",
+      allGuests: "ሁሉንም ገጣሚያን እና ደራሲያን ይመልከቱ",
     },
-    books: {
-      eyebrow: "ከመጽሐፍ መደርደሪያችን",
-      heading: "በእጃችን ያሉ መጽሐፍት",
-      seeAll: "ሁሉንም መጽሐፍት ይመልከቱ",
-      whereToFind: "የት ማግኘት እንደሚቻል",
+    shelf: {
+      heading: "መደርደሪያችን",
+      body: "አባላት ከክለቡ መደርደሪያ መጽሐፍ መዋስ ይችላሉ። ያሉትን መጽሐፍት በዘርፍ ይመልከቱ።",
+      seeAll: "ሙሉውን መደርደሪያ ይመልከቱ",
     },
-    community: {
-      eyebrow: "ተቀላቀሉን",
-      heading: "ማኅበረሰቡን ይቀላቀሉ",
-      body: "ስለ ቀጣዩ ስብሰባ ለማወቅ ኢሜይልዎን ይተውልን። ምንም ተጨማሪ ቅጽ የለም — ቦታ እና ሰዓት ብቻ እናሳውቆታለን።",
-      emailPlaceholder: "ኢሜይል አድራሻዎ",
-      submit: "ተመዝገቡ",
-      follow: "ተከተሉን",
+    visit: {
+      heading: "ወደ ምሽታችን ይምጡ",
+      body: "የቀጣዩን ምሽት ቦታ እና ሰዓት ለመስማት የቴሌግራም ቻናላችንን ይቀላቀሉ።",
+      join: "በቴሌግራም ይቀላቀሉ",
+      instagram: "በኢንስታግራም ይከተሉን",
+      directions: "አቅጣጫ ያግኙ",
     },
     contact: {
-      eyebrow: "ያግኙን",
-      heading: "እንነጋገር",
-      intro: "ጥያቄ አለዎት? መጽሐፍ ይዘው ይምጡ ወይም በኢሜይል ይጻፉልን — ሁለቱም ደስ ይለናል።",
       emailLabel: "ኢሜይል",
       pressNote: "ለፕሬስ እና ለአጋርነት ጥያቄዎች፣ በኢሜይል ያግኙን።",
-      addressLabel: "አድራሻ",
-      directions: "አቅጣጫ ያግኙ",
-      mapCaption: "ካርታ ላይ ይመልከቱ",
     },
     guestsPage: {
-      eyebrow: "ማኅበረሰባችን",
       heading: "ገጣሚያን እና ደራሲያን",
       intro:
         "በግራጫ ቃጭሎች ምሽቶች ላይ የተገኙ ገጣሚያን፣ ደራሲያን እና ጋዜጠኞች — ቃላቶቻቸውን ካካፈሉን መካከል ጥቂቶቹ።",
+      poster: "የምሽቱን ፖስተር ይመልከቱ",
     },
     booksPage: {
-      eyebrow: "የመጽሐፍ መደርደሪያችን",
       heading: "መጽሐፍት",
-      intro: "ክለቡ በእጁ ያሉትን መጽሐፍት በየዘርፋቸው ይመልከቱ።",
+      intro:
+        "ክለቡ በእጁ ያሉትን መጽሐፍት በየዘርፋቸው ይመልከቱ። እያንዳንዱ ሉህ የአንድ መደርደሪያ መጽሐፍትን ይዘረዝራል፤ አባላት መዋስ ይችላሉ።",
+      categories: "ዘርፎች",
+      shelf: "መደርደሪያ",
+      shelves: "መደርደሪያ",
+      viewFull: "በሙሉ መጠን ይመልከቱ",
     },
     supportPage: {
-      eyebrow: "የንባብ ቤቱን ይደግፉ",
       heading: "አብረን እንገንባ",
       intro:
         "ግራጫ ቃጭሎች ለማኅበረሰቡ የተፈጠረ የማኅበረሰብ ተነሳሽነት ነው። ለንባብ፣ ለፈጠራ፣ ለባህል እና ለጋራ ውይይት የሚያምኑ ሰዎች በሚሰጡት ልግስና፣ ጊዜ፣ ክህሎት፣ መጽሐፍ እና ሀሳብ እንደጋፋለን።",
+      note: "ሁሉም ድጋፍ ትርጉም አለው።",
+      cta: "በቴሌግራም መልዕክት ይላኩ",
+      waysHeading: "የመደገፊያ መንገዶች",
+      ways: [
+        {
+          key: "financial",
+          title: "በገንዘብ ይደግፉ",
+          body: "በባንክ፣ በሞባይል ገንዘብ ወይም በቴሌብር ለመደገፍ ያግኙን።",
+        },
+        {
+          key: "skills",
+          title: "ክህሎትዎን ይስጡ",
+          body: "ፎቶግራፍ፣ ቪዲዮ ምርት፣ ዲዛይን ወይም ሌላ ክህሎት በማጋራት ይርዱን።",
+        },
+        {
+          key: "books",
+          title: "መጽሐፍ ያበርክቱ",
+          body: "ለጋራ መደርደሪያችን አዲስ ወይም በጥሩ ሁኔታ ያሉ መጽሐፍትን ያካፍሉ።",
+        },
+        {
+          key: "materials",
+          title: "የምርት ዕቃዎች",
+          body: "ካሜራ፣ ማይክሮፎን፣ ህትመት ወይም ሌላ የምርት ዕቃ ያበርክቱ።",
+        },
+      ],
       message:
         "ድጋፍዎ ስብሰባዎቻችንን እንድንቀጥል፣ ብዙ ሰዎችን እንድናገናኝ፣ ሥራችንን እንድንመዘግብ እና ለጸሐፊዎች፣ ለአንባቢዎች፣ ለሙዚቀኞች እና ለመላው ማኅበረሰብ አቀባበል ያለው ቦታ እንድንፈጥር ይረዳናል።",
-      note: "ሁሉም ድጋፍ ትርጉም አለው።",
-      financial: {
-        title: "በገንዘብ ይደግፉ",
-        body: "በባንክ፣ በሞባይል ገንዘብ ወይም በቴሌብር ለመደገፍ ያግኙን።",
-        action: "ከቡድኑ ጋር ይገናኙ",
-      },
-      skills: {
-        title: "ክህሎትዎን ይስጡ",
-        body: "ፎቶግራፍ፣ ቪዲዮ ምርት፣ ዲዛይን ወይም ሌላ ክህሎት በማጋራት ይርዱን።",
-        action: "ያግኙን",
-      },
-      books: {
-        title: "መጽሐፍ ያበርክቱ",
-        body: "ለጋራ መደርደሪያችን አዲስ ወይም በጥሩ ሁኔታ ያሉ መጽሐፍትን ያካፍሉ።",
-        action: "ስለ መጽሐፍ ለመነጋገር",
-      },
-      materials: {
-        title: "የምርት ዕቃዎች",
-        body: "ካሜራ፣ ማይክሮፎን፣ ህትመት ወይም ሌላ የምርት ዕቃ ያበርክቱ።",
-        action: "የሚያስፈልገውን ይጠይቁ",
-      },
-      closing: "በስልክ ወይም በማኅበራዊ ገጾቻችን መልዕክት ይላኩልን።",
-      instagram: "Instagram ላይ ያግኙን",
-      telegram: "Telegram ላይ ያግኙን",
+    },
+    common: {
+      close: "ዝጋ",
     },
     footer: {
       location: "ቢሾፍቱ፣ ኢትዮጵያ",
@@ -114,111 +123,119 @@ export const dictionary = {
     langToggle: "English",
   },
   en: {
-    nav: { home: "Home", guests: "Writers & Poets", books: "Books", support: "Support" },
-    hero: {
-      cta: "Follow the next gathering",
+    nav: {
+      home: "Home",
+      guests: "Writers & Poets",
+      books: "Books",
+      support: "Support",
+      supportLong: "Support the House",
     },
-    nextGathering: {
-      eyebrow: "Next Gathering",
-      notify: "Get notified",
-    },
-    about: {
-      eyebrow: "About",
-      heading: "The Ceremony",
-      origin:
-        "Giracha Kachiloch House of Reading is a night that brings poetry, live music, and coffee to the same table. It began with a simple question: where can our stories be given the room they deserve? The answer became a coffee gathering — poetry read aloud around it, a guitar humming underneath, words rising like steam.",
-      programHeading: "The Program",
-      programIntro: "Every night moves through three parts:",
-      segments: [
+    programme: {
+      heading: "What happens on the night",
+      parts: [
         {
-          key: "readings",
-          title: "Readings & Discussion",
-          body: "Guest authors share their work and open the floor to the room.",
+          key: "discussion",
+          title: "A guest writer, in conversation",
+          body: "A guest author or poet shares their work and talks it through openly with the audience. It is the heart of every night.",
         },
         {
-          key: "poetry",
-          title: "Poetry",
-          body: "Poets read their verses aloud, letting the words fill the room.",
+          key: "members",
+          title: "Members take the floor",
+          body: "Members read poems and their own writing. Newcomers are welcome to read too.",
         },
         {
-          key: "acoustic",
-          title: "Acoustic Music",
-          body: "A guitar plays between readings, warming the night with live music.",
+          key: "songs",
+          title: "Songs and music",
+          body: "Voices and a guitar between the readings.",
         },
       ],
+      coffee: "Coffee is poured all evening.",
+    },
+    info: {
+      usually: "Usually",
+      when: "Saturdays · 11:30 Ethiopian time",
+      where: "Where",
+    },
+    about: {
+      heading: "How it began",
+      origin:
+        "Giracha Kachiloch House of Reading is a night that brings poetry, live music, and coffee to the same table. It began with a simple question: where can our stories be given the room they deserve? The answer became a coffee gathering — poetry read aloud around it, a guitar humming underneath, words rising like steam.",
+      photoCaption: "Carmel Kitchen, Bishoftu",
     },
     pastNights: {
-      eyebrow: "From the Archive",
-      heading: "Past Nights",
-      seeAll: "See all",
+      heading: "Past nights",
+      intro: "Posters from the nights our guests joined us. Tap one to see it full size.",
+      prev: "Previous posters",
+      next: "More posters",
+      pause: "Pause the posters",
+      play: "Play the posters",
+      allGuests: "Meet all the writers & poets",
     },
-    books: {
-      eyebrow: "From Our Bookshelf",
-      heading: "Books in hand",
-      seeAll: "See all books",
-      whereToFind: "Where to find this book",
+    shelf: {
+      heading: "The shelf",
+      body: "Members can borrow from the club's shelf. Browse what's on it by category.",
+      seeAll: "See the whole shelf",
     },
-    community: {
-      eyebrow: "Join Us",
-      heading: "Join the Community",
-      body: "Leave your email to hear about the next gathering. No extra forms — just the place and the time.",
-      emailPlaceholder: "Your email address",
-      submit: "Sign up",
-      follow: "Follow along",
+    visit: {
+      heading: "Come to a night",
+      body: "Join our Telegram channel to hear the place and time of the next night.",
+      join: "Join on Telegram",
+      instagram: "Follow on Instagram",
+      directions: "Get directions",
     },
     contact: {
-      eyebrow: "Contact",
-      heading: "Get in touch",
-      intro: "Have a question? Bring a book, or write to us — either works.",
       emailLabel: "Email",
       pressNote: "For press and partnership inquiries, reach us by email.",
-      addressLabel: "Address",
-      directions: "Get directions",
-      mapCaption: "View on the map",
     },
     guestsPage: {
-      eyebrow: "Our Community",
       heading: "Writers & Poets",
       intro:
         "Poets, authors, and journalists who have joined Giracha Kachiloch House of Reading nights — a few of the voices who have shared their words with us.",
+      poster: "See the night's poster",
     },
     booksPage: {
-      eyebrow: "Our Bookshelf",
       heading: "Books",
       intro:
-        "Browse the books currently in the club's collection, arranged by category.",
+        "The club's collection by category. Each printed sheet lists the books on one shelf, and members can borrow them.",
+      categories: "Categories",
+      shelf: "shelf",
+      shelves: "shelves",
+      viewFull: "View full size",
     },
     supportPage: {
-      eyebrow: "Support the House",
       heading: "Support the House",
       intro:
-        "Gracha Qachlotch is a community initiative created for the community. We depend on the generosity, time, skills, books, and ideas of people who believe in reading, creativity, culture, and shared conversation.",
+        "Giracha Kachiloch is a community initiative created for the community. We depend on the generosity, time, skills, books, and ideas of people who believe in reading, creativity, culture, and shared conversation.",
+      note: "Every kind of support matters.",
+      cta: "Message us on Telegram",
+      waysHeading: "Ways to help",
+      ways: [
+        {
+          key: "financial",
+          title: "Give financially",
+          body: "Contact us for bank, mobile-money, and Telebirr support options.",
+        },
+        {
+          key: "skills",
+          title: "Share your skills",
+          body: "Help with photography, video production, design, or another skill you can offer.",
+        },
+        {
+          key: "books",
+          title: "Give books",
+          body: "Share new or well-kept books for our community bookshelf.",
+        },
+        {
+          key: "materials",
+          title: "Give production materials",
+          body: "Support our outreach with cameras, microphones, printing, or other useful materials.",
+        },
+      ],
       message:
         "Your support helps us continue our gatherings, reach more people, document our work, and create welcoming spaces for writers, readers, musicians, and the wider community.",
-      note: "Every kind of support matters.",
-      financial: {
-        title: "Give financially",
-        body: "Contact us for bank, mobile-money, and Telebirr support options.",
-        action: "Contact the team",
-      },
-      skills: {
-        title: "Share your skills",
-        body: "Help with photography, video production, design, or another skill you can offer.",
-        action: "Get in touch",
-      },
-      books: {
-        title: "Give books",
-        body: "Share new or well-kept books for our community bookshelf.",
-        action: "Talk to us about books",
-      },
-      materials: {
-        title: "Give production materials",
-        body: "Support our outreach with cameras, microphones, printing, or other useful materials.",
-        action: "Ask about current needs",
-      },
-      closing: "Call us or send a message through our social pages to find the best way to help.",
-      instagram: "Reach us on Instagram",
-      telegram: "Reach us on Telegram",
+    },
+    common: {
+      close: "Close",
     },
     footer: {
       location: "Bishoftu, Ethiopia",

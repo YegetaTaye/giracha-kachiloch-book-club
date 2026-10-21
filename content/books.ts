@@ -10,7 +10,6 @@ export type Book = {
   slug: string;
   titleAm: string;
   titleEn: string;
-  authorName: string;
   cover: string;
   category: BookCategory;
 };
@@ -46,12 +45,13 @@ const shelfBooks: Record<BookCategory, string[]> = {
   poem: ["p1", "p2"],
 };
 
-export const books: Book[] = bookCategories.flatMap(({ key }) =>
-  shelfBooks[key].map((code) => ({
+// Each image is one printed shelf sheet listing several books, so it is
+// titled as a shelf of its category rather than as a single book.
+export const books: Book[] = bookCategories.flatMap(({ key, labelAm, labelEn }) =>
+  shelfBooks[key].map((code, i) => ({
     slug: `${key}-${code}`,
-    titleAm: `መጽሐፍ ${code.toUpperCase()}`,
-    titleEn: `Shelf book ${code.toUpperCase()}`,
-    authorName: "Giracha Kachiloch House of Reading collection",
+    titleAm: `${labelAm} · መደርደሪያ ${i + 1}`,
+    titleEn: `${labelEn} · Shelf ${i + 1}`,
     cover: `/book-shelf/${key}/${code}.jpg`,
     category: key,
   })),

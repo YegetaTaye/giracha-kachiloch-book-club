@@ -1,31 +1,53 @@
+"use client";
+
 import Image from "next/image";
+import { useState } from "react";
+import { useLanguage } from "@/components/LanguageProvider";
+import { Lightbox } from "@/components/Lightbox";
 import type { Guest } from "@/content/guests";
 
-export function GuestCard({ guest }: { guest: Guest }) {
+/**
+ * A guest: their portrait, who they are, and their night's poster. Every
+ * portrait sits under the same warm ink wash so photos from very different
+ * sources read as one set; hover lifts it to show the original colour.
+ */
+export function GuestCard({ guest, crop = "aspect-[4/5]" }: { guest: Guest; crop?: string }) {
+  const { t, lang } = useLanguage();
+  const [posterOpen, setPosterOpen] = useState(false);
+  const name = lang === "am" ? guest.nameAm : guest.nameEn;
+
   return (
-    <div className="group">
-      <div className="relative aspect-[4/5] overflow-hidden bg-parchment-dim">
+    <article className="group">
+      <div className={`relative overflow-hidden rounded-2xl bg-ink ${crop}`}>
         <Image
           src={guest.image}
-          alt={guest.nameEn}
+          alt={name}
           fill
-          sizes="(min-width: 1024px) 23vw, (min-width: 640px) 45vw, 90vw"
-          className="object-cover grayscale-[15%] transition-transform duration-700 ease-out group-hover:scale-105"
+          sizes="(min-width: 1024px) 400px, (min-width: 640px) 46vw, 92vw"
+          className="object-cover object-top grayscale-[0.55] sepia-[0.35] transition duration-500 ease-out group-hover:scale-[1.03] group-hover:grayscale-0 group-hover:sepia-0"
         />
-        <div className="pointer-events-none absolute inset-0 ring-1 ring-inset ring-ink/10" />
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 bg-gradient-to-t from-ink/55 via-ink/15 to-gold/10 mix-blend-multiply transition-opacity duration-500 group-hover:opacity-0"
+        />
       </div>
-      <div className="mt-4">
-        <p className="font-display-am text-xl text-ink">{guest.nameAm}</p>
-        <p className="font-body-en text-sm text-ink/55">{guest.nameEn}</p>
-        <p className="mt-1 font-body-en text-xs uppercase tracking-wide text-gold">
-          {guest.roleAm} · {guest.roleEn}
-        </p>
-        {guest.bioEn && (
-          <p className="mt-3 font-body-en text-sm leading-relaxed text-ink/70">
-            {guest.bioEn}
-          </p>
-        )}
+      <div className="mt-4 border-t-2 border-ink pt-3">
+        <h2 className="font-display text-2xl font-extrabold leading-tight text-ink [font-variation-settings:'wdth'_80]">
+          {guest.nameAm}
+        </h2>
+        <p lang="en" className="text-base text-ink-soft">{guest.nameEn}</p>
+        <p className="mt-1 text-sm font-semibold text-gold-deep">{lang === "am" ? guest.roleAm : guest.roleEn}</p>
+        <button
+          type="button"
+          onClick={() => setPosterOpen(true)}
+          className="mt-2 min-h-11 text-sm font-semibold text-ink underline decoration-ink/40 underline-offset-4 hover:decoration-ink"
+        >
+          {t.guestsPage.poster}
+        </button>
       </div>
-    </div>
+      {posterOpen && (
+        <Lightbox src={guest.poster} alt={name} onClose={() => setPosterOpen(false)} />
+      )}
+    </article>
   );
 }

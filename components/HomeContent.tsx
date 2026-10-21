@@ -1,409 +1,226 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useLanguage } from "@/components/LanguageProvider";
-import { Reveal } from "@/components/Reveal";
-import { SectionHeading } from "@/components/SectionHeading";
-import { PullQuote } from "@/components/PullQuote";
-import { SmokeWisp } from "@/components/SmokeWisp";
-import { CoffeeRing } from "@/components/CoffeeRing";
-import { Carousel } from "@/components/Carousel";
-import { ArchiveMarquee } from "@/components/ArchiveMarquee";
-import { EmailSignupForm } from "@/components/EmailSignupForm";
-import { BookCard } from "@/components/BookCard";
+import { InfoBar, IconTelegram } from "@/components/InfoBar";
+import { PosterRow } from "@/components/PosterRow";
+import { Tibeb } from "@/components/Tibeb";
 import { site } from "@/content/site";
 import { pastNights } from "@/content/pastNights";
-import { featuredBooks } from "@/content/books";
-
-function IconMail({ className = "" }: { className?: string }) {
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.5"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      className={className}
-      aria-hidden="true"
-    >
-      <rect x="3" y="5" width="18" height="14" rx="2" />
-      <path d="m3.5 6.5 8.5 6 8.5-6" />
-    </svg>
-  );
-}
-
-function IconPin({ className = "" }: { className?: string }) {
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.5"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      className={className}
-      aria-hidden="true"
-    >
-      <path d="M12 21s-7-6.1-7-11.5A7 7 0 0 1 19 9.5C19 14.9 12 21 12 21Z" />
-      <circle cx="12" cy="9.5" r="2.5" />
-    </svg>
-  );
-}
-
-// Stand-in photos until real event footage (book discussion, a poet reading,
-// the guitarist playing) replaces these — swap the files in
-// /public/images/scenes/ and this list, no other changes needed.
-const aboutSlides = [
-  {
-    src: "/images/scenes/carousel-book-discussion.jpg",
-    alt: "Readers gathered around a book in conversation",
-  },
-  {
-    src: "/images/scenes/carousel-poetry-reading.jpg",
-    alt: "A poet reading aloud at the microphone",
-  },
-  {
-    src: "/images/scenes/carousel-guitar.jpg",
-    alt: "Acoustic guitar played between readings",
-  },
-];
+import { bookCategories, books } from "@/content/books";
 
 export function HomeContent() {
   const { t, lang } = useLanguage();
+  const directionsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(site.venue.mapQuery)}`;
 
   return (
     <>
-      {/* Hero */}
-      <section className="relative flex h-dvh min-h-[560px] items-end overflow-hidden bg-ink text-parchment">
+      {/* Full-screen opening: the room itself, with the name too big for the frame. */}
+      <section className="relative flex h-[calc(100svh-6.5rem)] min-h-[34rem] flex-col justify-between overflow-hidden bg-ink text-parchment md:h-[calc(100svh-4.25rem)]">
         <video
           autoPlay
           muted
           loop
           playsInline
           poster="/images/hero-poster.jpg"
-          className="absolute inset-0 h-full w-full object-cover opacity-80"
+          aria-label={lang === "am" ? "ካለፈ ምሽት የተወሰደ ቪዲዮ" : "Video from a past night at Carmel Kitchen"}
+          className="absolute inset-0 h-full w-full object-cover"
         >
           <source src="/videos/hero-loop.mp4" type="video/mp4" />
         </video>
-        <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/55 to-ink/25" />
-        <SmokeWisp className="absolute right-8 top-10 h-40 w-24 opacity-60 sm:right-16" />
+        <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-b from-ink/70 via-ink/20 to-ink" />
 
-        <div className="relative z-10 mx-auto w-full max-w-6xl px-5 pb-16 pt-28 sm:px-8 sm:pb-20">
-          <p className="font-body-en text-xs uppercase tracking-[0.3em] text-gold">
-            {site.location.town} · {site.location.country}
+        <div className="relative mx-auto flex w-full max-w-7xl items-start justify-between gap-6 px-4 pt-6 sm:px-8 sm:pt-10">
+          <p className="max-w-md text-lg leading-snug text-parchment sm:text-xl">
+            {lang === "am" ? site.missionAm : site.missionEn}
           </p>
-          <h1 className="mt-4 max-w-3xl font-display-am text-4xl leading-[1.15] text-balance text-parchment sm:text-6xl md:text-7xl">
-            {site.nameAm}
-          </h1>
-          <p className="mt-2 max-w-xl font-display-en text-lg italic text-parchment/75 sm:text-2xl">
-            {site.taglineEn} — {site.missionEn}
-          </p>
+          <span className="hidden shrink-0 rounded-full bg-ink/70 px-3 py-1.5 text-sm font-semibold backdrop-blur-sm sm:block">
+            {t.about.photoCaption}
+          </span>
+        </div>
 
-          <div className="mt-8 flex flex-wrap items-center gap-4">
-            <a
-              href="#community"
-              className="rounded-full bg-gold px-6 py-3 font-body-en text-sm font-medium text-ink transition-colors hover:bg-parchment"
-            >
-              {t.hero.cta}
-            </a>
-            <span className="font-body-en text-sm text-parchment/60">
-              {lang === "am"
-                ? site.nextGathering.patternAm
-                : site.nextGathering.patternEn}
+        {/* The name at the full width of the screen, in gold so it sits in the
+            room's warm light rather than glaring. Phones stack its two words. */}
+        <h1 className="relative mx-auto w-full max-w-7xl px-4 pb-6 font-display text-[26vw] font-black leading-[0.85] text-gold [font-variation-settings:'wdth'_70] sm:whitespace-nowrap sm:px-8 sm:pb-8 sm:text-[min(14vw,13rem)]">
+          {site.nameAm.split(" ").map((word, i) => (
+            <span key={word} className="block sm:inline">
+              {i > 0 && <span className="hidden sm:inline"> </span>}
+              {word}
             </span>
-          </div>
-        </div>
+          ))}
+        </h1>
       </section>
+      <Tibeb />
 
-      {/* Next gathering strip */}
-      <section className="border-b border-ink/10 bg-parchment-dim">
-        <div className="mx-auto flex max-w-6xl flex-col gap-3 px-5 py-6 sm:flex-row sm:items-center sm:justify-between sm:px-8">
-          <div>
-            <p className="font-body-en text-xs uppercase tracking-[0.2em] text-gold">
-              {t.nextGathering.eyebrow}
-            </p>
-            <p className="mt-1 font-display-am text-xl text-ink">
-              {lang === "am"
-                ? site.nextGathering.themeAm
-                : site.nextGathering.themeEn}
-            </p>
-            <p className="font-body-en text-sm text-ink/60">
-              {lang === "am"
-                ? site.nextGathering.dateAm
-                : site.nextGathering.dateEn}{" "}
-              · {site.venue.nameEn}, {site.location.town}
-            </p>
-          </div>
-          <a
-            href="#community"
-            className="inline-block whitespace-nowrap rounded-full border border-ink/25 px-5 py-2 font-body-en text-sm text-ink transition-colors hover:border-gold hover:text-gold"
-          >
-            {t.nextGathering.notify}
-          </a>
-        </div>
-      </section>
+      {/* The night's programme, given its own screen. */}
+      <section className="bg-ink text-parchment">
+        <div className="mx-auto grid min-h-[calc(100svh-4.25rem)] max-w-7xl content-center gap-10 px-4 py-16 sm:px-8 lg:grid-cols-12 lg:gap-12">
+          <h2 className="type-display lg:col-span-5">{t.programme.heading}</h2>
 
-      {/* About / Ceremony */}
-      <section className="relative overflow-hidden px-5 py-24 sm:px-8">
-        <CoffeeRing className="pointer-events-none absolute -left-16 -top-10 h-72 w-72" />
-        <div className="relative mx-auto max-w-6xl">
-          <Reveal>
-            <SectionHeading
-              eyebrow={t.about.eyebrow}
-              am={t.about.heading}
-              en={lang === "am" ? "The Ceremony" : undefined}
-            />
-          </Reveal>
-
-          <div className="mt-14 grid gap-x-16 gap-y-10 lg:grid-cols-[0.85fr_1fr]">
-            {/* Sticky, cross-fading carousel — stays in view while the story column
-                scrolls past it. See aboutSlides above to swap in real footage. */}
-            <Reveal className="lg:sticky lg:top-28 lg:self-start">
-              <div className="group relative aspect-[4/5] overflow-hidden bg-parchment-dim">
-                <Carousel slides={aboutSlides} />
-                <div className="pointer-events-none absolute inset-0 ring-1 ring-inset ring-ink/10" />
-                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink/60 via-transparent to-transparent" />
-                <span className="absolute bottom-4 left-4 font-body-en text-[11px] uppercase tracking-[0.2em] text-parchment/90">
-                  {site.venue.nameEn}, {site.location.town}
-                </span>
-                <span
-                  aria-hidden="true"
-                  className="absolute right-3 top-3 origin-top-right -rotate-90 whitespace-nowrap font-body-en text-[10px] uppercase tracking-[0.3em] text-parchment/70"
+          {/* The running order: each part rides its own rule, like a printed programme. */}
+          <div className="lg:col-span-7">
+            <ol>
+              {t.programme.parts.map((part, i) => (
+                <li
+                  key={part.key}
+                  className="programme-part relative pb-8 pt-5"
+                  style={{ "--i": i } as React.CSSProperties}
                 >
-                  {site.nameAm} · {site.taglineEn}
-                </span>
-              </div>
-            </Reveal>
-
-            {/* Story + ceremony rounds */}
-            <div className="flex flex-col gap-12">
-              <Reveal>
-                <p className="font-body-en text-lg leading-relaxed text-ink/80">
-                  {t.about.origin}
-                </p>
-              </Reveal>
-
-              <Reveal delay={100}>
-                <h3 className="font-display-am text-2xl text-terracotta">
-                  {t.about.programHeading}
-                </h3>
-                <p className="mt-3 font-body-en text-base leading-relaxed text-ink/70">
-                  {t.about.programIntro}
-                </p>
-
-                <ol className="mt-6 flex flex-col divide-y divide-ink/10">
-                  {t.about.segments.map((segment, i) => (
-                    <li
-                      key={segment.key}
-                      className="group flex items-start gap-5 py-5 first:pt-0 last:pb-0"
-                    >
-                      <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-gold/50 font-body-en text-xs text-gold transition-colors duration-300 group-hover:border-gold group-hover:bg-gold group-hover:text-ink">
-                        0{i + 1}
-                      </span>
-                      <div>
-                        <p className="font-display-am text-xl text-ink transition-colors duration-300 group-hover:text-terracotta">
-                          {segment.title}
-                        </p>
-                        <p className="mt-1 font-body-en text-sm leading-relaxed text-ink/65">
-                          {segment.body}
-                        </p>
-                      </div>
-                    </li>
-                  ))}
-                </ol>
-              </Reveal>
-            </div>
-          </div>
-
-          <Reveal delay={120} className="mt-20">
-            <PullQuote
-              am={site.missionAm}
-              en={site.missionEn}
-              creditAm={site.nameAm}
-              creditEn={site.taglineEn}
-              className="mx-auto max-w-3xl text-center"
-            />
-          </Reveal>
-        </div>
-      </section>
-
-      {/* Past nights — full archive, as a continuously scrolling right-to-left reel */}
-      <section className="overflow-hidden bg-ink py-24 text-parchment">
-        <div className="mx-auto max-w-6xl px-5 sm:px-8">
-          <Reveal>
-            <SectionHeading
-              eyebrow={t.pastNights.eyebrow}
-              am={t.pastNights.heading}
-              en={lang === "am" ? "Past Nights" : undefined}
-            />
-          </Reveal>
-        </div>
-
-        <Reveal delay={100} className="mt-12">
-          <ArchiveMarquee nights={pastNights} />
-        </Reveal>
-      </section>
-
-      {/* Books currently in the club's collection */}
-      <section className="px-5 py-24 sm:px-8">
-        <div className="mx-auto max-w-6xl">
-          <Reveal className="flex flex-wrap items-end justify-between gap-6">
-            <SectionHeading
-              eyebrow={t.books.eyebrow}
-              am={t.books.heading}
-                en={lang === "am" ? "Books in hand" : undefined}
-            />
-            <Link
-              href="/books"
-              className="font-body-en text-sm text-gold underline underline-offset-4 hover:text-terracotta"
+                  <span aria-hidden="true" className="programme-rule absolute inset-x-0 top-0 h-0.5 bg-gold" />
+                  <h3 className="font-display text-[1.75rem] font-extrabold leading-tight [font-variation-settings:'wdth'_78] sm:text-[2.25rem]">
+                    {part.title}
+                  </h3>
+                  <p className="mt-2 max-w-xl text-lg leading-relaxed text-sand">{part.body}</p>
+                </li>
+              ))}
+            </ol>
+            <p
+              className="programme-part relative pt-4 text-sm text-sand"
+              style={{ "--i": 3 } as React.CSSProperties}
             >
-              {t.books.seeAll} →
-            </Link>
-          </Reveal>
-
-          <div className="mt-12 grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
-            {featuredBooks.map((book, i) => (
-              <Reveal key={book.slug} delay={(i % 3) * 90}>
-                <BookCard book={book} />
-              </Reveal>
-            ))}
+              <span aria-hidden="true" className="programme-rule absolute inset-x-0 top-0 h-0.5 bg-gold/50" />
+              {t.programme.coffee}
+            </p>
           </div>
+
+          <InfoBar className="lg:col-span-12" />
         </div>
       </section>
 
-      {/* Community / Join */}
-      <section
-        id="community"
-        className="relative overflow-hidden bg-terracotta px-5 py-24 text-parchment sm:px-8"
-      >
-        <SmokeWisp className="pointer-events-none absolute -bottom-4 left-10 h-48 w-28 opacity-30" />
-        <div className="relative mx-auto max-w-3xl text-center">
-          <Reveal>
-            <SectionHeading
-              eyebrow={t.community.eyebrow}
-              am={t.community.heading}
-              en={lang === "am" ? "Join the Community" : undefined}
-              align="center"
-            />
-            <p className="mx-auto mt-5 max-w-xl font-body-en text-base leading-relaxed text-parchment/85">
-              {t.community.body}
-            </p>
-            <div className="mt-8 flex justify-center">
-              <EmailSignupForm />
+      {/* How it began */}
+      <section className="mx-auto grid max-w-7xl items-center gap-10 px-4 py-20 sm:px-8 lg:grid-cols-12 lg:gap-12 lg:py-28">
+        <div className="lg:col-span-7">
+          <h2 className="type-h2 text-ink">{t.about.heading}</h2>
+          <p className="mt-6 max-w-[62ch] text-lg leading-relaxed text-ink">{t.about.origin}</p>
+        </div>
+        {/* The house roundel from the posters, at the scale of a seal. */}
+        <Image
+          src="/images/logo.png"
+          alt={`${site.nameAm} · ${site.taglineAm}`}
+          width={1024}
+          height={1024}
+          sizes="(min-width: 1024px) 26rem, 70vw"
+          className="mx-auto w-[min(70vw,26rem)] lg:col-span-4 lg:col-start-9"
+        />
+      </section>
+
+      {/* Past nights, as the posters that announced them */}
+      <section className="bg-ink pb-14 pt-20 text-parchment lg:pb-20 lg:pt-28">
+        <div className="mx-auto max-w-7xl px-4 sm:px-8">
+          <h2 className="type-h2">{t.pastNights.heading}</h2>
+          <p className="mt-4 max-w-xl text-lg text-sand">{t.pastNights.intro}</p>
+        </div>
+        <PosterRow nights={pastNights} className="mt-10">
+          <Link
+            href="/guests"
+            className="inline-flex min-h-12 items-center rounded-full border-2 border-parchment/40 px-6 font-semibold transition-colors hover:border-parchment"
+          >
+            {t.pastNights.allGuests}
+          </Link>
+        </PosterRow>
+      </section>
+
+      {/* The shelf */}
+      <section className="mx-auto grid max-w-7xl gap-10 px-4 py-20 sm:px-8 lg:grid-cols-12 lg:gap-12 lg:py-28">
+        <div className="lg:col-span-6">
+          <h2 className="type-h2 text-ink">{t.shelf.heading}</h2>
+          <p className="mt-6 max-w-[55ch] text-lg leading-relaxed">{t.shelf.body}</p>
+          <ul className="mt-8 border-t-2 border-ink">
+            {bookCategories.map((category) => {
+              const count = books.filter((book) => book.category === category.key).length;
+              return (
+                <li key={category.key}>
+                  <Link
+                    href={`/books#${category.key}`}
+                    className="group flex items-baseline justify-between gap-4 border-b border-ink/20 py-4"
+                  >
+                    <span className="font-display text-2xl font-extrabold text-ink [font-variation-settings:'wdth'_80] group-hover:text-gold-deep">
+                      {lang === "am" ? category.labelAm : category.labelEn}
+                    </span>
+                    <span className="text-sm font-semibold text-ink-soft">
+                      {count} {count === 1 ? t.booksPage.shelf : t.booksPage.shelves}
+                    </span>
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
+          <Link
+            href="/books"
+            className="mt-8 inline-flex min-h-11 items-center rounded-full bg-ink px-6 font-semibold text-parchment transition-colors hover:bg-ink-deep"
+          >
+            {t.shelf.seeAll}
+          </Link>
+        </div>
+        <Link
+          href="/books"
+          aria-label={t.shelf.seeAll}
+          className="relative block aspect-[2/3] overflow-hidden rounded-[1.75rem] bg-ink lg:col-span-5 lg:col-start-8"
+        >
+          <Image
+            src={books[0].cover}
+            alt=""
+            fill
+            sizes="(min-width: 1024px) 40vw, 92vw"
+            className="object-cover"
+          />
+        </Link>
+      </section>
+
+      {/* The close: where to be, and the one action */}
+      <section className="bg-terracotta text-parchment">
+        <div className="mx-auto max-w-7xl px-4 py-20 sm:px-8 lg:py-28">
+          <h2 className="type-display max-w-4xl">{t.visit.heading}</h2>
+          <div className="mt-10 grid gap-10 lg:grid-cols-12">
+            <div className="lg:col-span-6">
+              <p className="font-display text-3xl font-extrabold [font-variation-settings:'wdth'_80]">
+                {site.venue.nameEn}
+              </p>
+              <p className="mt-2 text-lg text-cream">
+                {lang === "am" ? site.venue.detailAm : site.venue.detailEn},{" "}
+                {lang === "am" ? site.location.townAm : site.location.town}
+              </p>
+              <p className="mt-1 text-lg text-cream">{t.info.when}</p>
+              {site.email && (
+                <p className="mt-6 text-lg">
+                  <a href={`mailto:${site.email}`} className="underline underline-offset-4">
+                    {site.email}
+                  </a>
+                </p>
+              )}
             </div>
-            <div className="mt-8 flex justify-center gap-6">
+            <div className="flex flex-col gap-4 lg:col-span-6">
+              <p className="max-w-md text-lg text-cream">{t.visit.body}</p>
+              <div className="flex flex-wrap gap-3">
+                <a
+                  href={site.social.telegram}
+                  target="_blank"
+                  rel="noreferrer noopener"
+                  className="inline-flex min-h-12 items-center gap-2 rounded-full bg-parchment px-6 font-bold text-terracotta transition-colors hover:bg-white"
+                >
+                  <IconTelegram className="h-5 w-5" />
+                  {t.visit.join}
+                </a>
+                <a
+                  href={directionsUrl}
+                  target="_blank"
+                  rel="noreferrer noopener"
+                  className="inline-flex min-h-12 items-center rounded-full border-2 border-parchment/40 px-6 font-semibold transition-colors hover:border-parchment"
+                >
+                  {t.visit.directions}
+                </a>
+              </div>
               <a
                 href={site.social.instagram}
                 target="_blank"
                 rel="noreferrer noopener"
-                className="font-body-en text-sm text-parchment/80 underline underline-offset-4 hover:text-gold"
+                className="self-start py-2 text-cream underline decoration-parchment/50 underline-offset-4 hover:text-parchment"
               >
-                Instagram
-              </a>
-              <a
-                href={site.social.telegram}
-                target="_blank"
-                rel="noreferrer noopener"
-                className="font-body-en text-sm text-parchment/80 underline underline-offset-4 hover:text-gold"
-              >
-                Telegram
+                {t.visit.instagram}
               </a>
             </div>
-          </Reveal>
-        </div>
-      </section>
-
-      {/* Contact */}
-      <section className="relative overflow-hidden px-5 py-24 sm:px-8">
-        <CoffeeRing className="pointer-events-none absolute -right-20 bottom-0 h-80 w-80" />
-        <div className="relative mx-auto max-w-6xl">
-          <Reveal className="text-center">
-            <SectionHeading
-              eyebrow={t.contact.eyebrow}
-              am={t.contact.heading}
-              en={lang === "am" ? "Get in Touch" : undefined}
-              align="center"
-            />
-            <p className="mx-auto mt-4 max-w-lg font-body-en text-base leading-relaxed text-ink/70">
-              {t.contact.intro}
-            </p>
-          </Reveal>
-
-          {/* Channel list — mirrors the numbered-round pattern from the
-              Program section above, swapped for icons since these are
-              distinct channels rather than sequential steps. Centered as a
-              pair so it reads as one balanced unit above the map. */}
-          <Reveal>
-            <ul className="mx-auto mt-12 flex max-w-3xl flex-col divide-y divide-ink/10 sm:flex-row sm:divide-y-0 sm:divide-x">
-              <li className="group flex flex-1 items-start gap-4 py-6 first:pt-0 sm:justify-center sm:px-8 sm:py-0 sm:first:pl-0 sm:last:pr-0">
-                <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-gold/50 text-gold transition-colors duration-300 group-hover:border-gold group-hover:bg-gold group-hover:text-ink">
-                  <IconMail className="h-5 w-5" />
-                </span>
-                <div>
-                  <p className="font-body-en text-xs uppercase tracking-[0.2em] text-gold">
-                    {t.contact.emailLabel}
-                  </p>
-                  <a
-                    href={`mailto:${site.email}`}
-                    className="mt-1 block font-display-am text-xl text-ink transition-colors duration-300 group-hover:text-terracotta"
-                  >
-                    {site.email}
-                  </a>
-                  <p className="mt-1 font-body-en text-sm leading-relaxed text-ink/60">
-                    {t.contact.pressNote}
-                  </p>
-                </div>
-              </li>
-
-              <li className="group flex flex-1 items-start gap-4 py-6 last:pb-0 sm:justify-center sm:px-8 sm:py-0 sm:first:pl-0 sm:last:pr-0">
-                <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-gold/50 text-gold transition-colors duration-300 group-hover:border-gold group-hover:bg-gold group-hover:text-ink">
-                  <IconPin className="h-5 w-5" />
-                </span>
-                <div>
-                  <p className="font-body-en text-xs uppercase tracking-[0.2em] text-gold">
-                    {t.contact.addressLabel}
-                  </p>
-                  <p className="mt-1 font-display-am text-xl text-ink transition-colors duration-300 group-hover:text-terracotta">
-                    {site.venue.nameEn}
-                  </p>
-                  <p className="font-body-en text-sm leading-relaxed text-ink/60">
-                    {lang === "am" ? site.venue.detailAm : site.venue.detailEn},{" "}
-                    {site.location.town}, {site.location.country}
-                  </p>
-                </div>
-              </li>
-            </ul>
-          </Reveal>
-
-          {/* Map — full-width, centered, and considerably larger than the
-              About photo card since it's the section's focal point here. */}
-          <Reveal delay={100}>
-            <div className="group relative mx-auto mt-16 h-[340px] w-full overflow-hidden bg-parchment-dim sm:h-[420px] lg:h-[520px]">
-              <iframe
-                title={`Map to ${site.venue.nameEn}, ${site.location.town}`}
-                src={`https://www.google.com/maps?q=${encodeURIComponent(site.venue.mapQuery)}&output=embed`}
-                className="h-full w-full grayscale-[25%] contrast-[1.05] sepia-[10%]"
-                style={{ border: 0 }}
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-              />
-              <div className="pointer-events-none absolute inset-0 ring-1 ring-inset ring-ink/10" />
-              <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-ink/70 via-ink/10 to-transparent" />
-              <span className="pointer-events-none absolute bottom-4 left-4 font-body-en text-[11px] uppercase tracking-[0.2em] text-parchment/90">
-                {t.contact.mapCaption}
-              </span>
-              <a
-                href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(site.venue.mapQuery)}`}
-                target="_blank"
-                rel="noreferrer noopener"
-                className="absolute bottom-4 right-4 inline-flex items-center gap-1.5 rounded-full bg-parchment/95 px-4 py-2 font-body-en text-xs font-medium text-ink shadow-sm transition-colors hover:bg-gold"
-              >
-                {t.contact.directions}
-                <span aria-hidden="true">→</span>
-              </a>
-            </div>
-          </Reveal>
+          </div>
         </div>
       </section>
     </>

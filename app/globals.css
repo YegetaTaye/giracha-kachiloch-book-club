@@ -1,26 +1,39 @@
 @import "tailwindcss";
 
+/* The house palette: parchment ground, espresso ink, gold, and terracotta,
+   which marks the Telegram action. Each colour pair used for text clears
+   WCAG AA. */
 :root {
   --color-parchment: #f3ece1;
   --color-parchment-dim: #eae0cd;
   --color-ink: #2b1b12;
+  --color-ink-deep: #1f130c;
+  --color-ink-soft: #6b5444;
+  --color-sand: #cdbca3;
+  --color-cream: #e8d9c0;
   --color-gold: #b8863b;
+  --color-gold-deep: #7f5a1e;
   --color-terracotta: #7a2e1d;
-  --color-evergreen: #3a4f3a;
+  --color-terracotta-pressed: #5e2215;
 }
 
 @theme inline {
   --color-parchment: var(--color-parchment);
   --color-parchment-dim: var(--color-parchment-dim);
   --color-ink: var(--color-ink);
+  --color-ink-deep: var(--color-ink-deep);
+  --color-ink-soft: var(--color-ink-soft);
+  --color-sand: var(--color-sand);
+  --color-cream: var(--color-cream);
   --color-gold: var(--color-gold);
+  --color-gold-deep: var(--color-gold-deep);
   --color-terracotta: var(--color-terracotta);
-  --color-evergreen: var(--color-evergreen);
+  --color-terracotta-pressed: var(--color-terracotta-pressed);
 
-  --font-display-am: var(--font-noto-serif-ethiopic);
-  --font-body-am: var(--font-noto-sans-ethiopic);
-  --font-display-en: var(--font-playfair);
-  --font-body-en: var(--font-lora);
+  /* Archivo carries Latin, Noto Sans Ethiopic carries fidel; neither covers
+     the other script, so mixed AM/EN text picks the right face per glyph. */
+  --font-display: var(--font-archivo), var(--font-noto-sans-ethiopic), sans-serif;
+  --font-body: var(--font-archivo), var(--font-noto-sans-ethiopic), sans-serif;
 }
 
 html {
@@ -32,67 +45,111 @@ body {
   color: var(--color-ink);
 }
 
-/* subtle paper grain so the parchment background doesn't read as a flat CSS color */
-.bg-paper-grain {
-  background-image: radial-gradient(
-      circle at 1px 1px,
-      rgba(43, 27, 18, 0.055) 1px,
-      transparent 0
-    );
-  background-size: 22px 22px;
-}
-
-.text-balance {
+/* Type roles. Display roles run condensed and heavy like the poster
+   lettering; body stays at full width for reading. */
+@utility type-display {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-variation-settings: "wdth" 72;
+  font-size: clamp(3.25rem, 8.5vw, 6rem);
+  line-height: 0.98;
+  letter-spacing: -0.01em;
   text-wrap: balance;
 }
 
-@keyframes reveal-up {
+@utility type-h2 {
+  font-family: var(--font-display);
+  font-weight: 850;
+  font-variation-settings: "wdth" 75;
+  font-size: clamp(2.25rem, 5vw, 3.75rem);
+  line-height: 1.02;
+  text-wrap: balance;
+}
+
+@utility type-h3 {
+  font-family: var(--font-display);
+  font-weight: 750;
+  font-variation-settings: "wdth" 82;
+  font-size: 1.5rem;
+  line-height: 1.15;
+}
+
+@utility type-label {
+  font-family: var(--font-body);
+  font-weight: 650;
+  font-size: 0.8125rem;
+  line-height: 1.3;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* Fidel has no case, and tracking pulls its syllables apart. Latin-only
+   labels keep their spacing by carrying lang="en". */
+:is(.uppercase, .type-label, [class*="tracking-"]):lang(am) {
+  letter-spacing: normal;
+}
+
+:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
+}
+
+::selection {
+  background: var(--color-gold);
+  color: var(--color-ink);
+}
+
+/* The programme's one authored motion: on first paint each part's rule
+   draws across and the parts settle in order. Everything is visible without it. */
+@keyframes rule-draw {
+  from {
+    transform: scaleX(0);
+  }
+}
+
+@keyframes part-in {
   from {
     opacity: 0;
-    transform: translateY(28px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
+    transform: translateY(10px);
   }
 }
 
-.reveal {
-  opacity: 0;
+.programme-rule {
+  transform-origin: left;
+  animation: rule-draw 1.1s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
-.reveal.is-visible {
-  animation: reveal-up 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+.programme-part {
+  animation: part-in 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-delay: calc(var(--i, 0) * 140ms + 250ms);
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .reveal {
-    opacity: 1;
+  html {
+    scroll-behavior: auto;
+  }
+
+  .programme-rule,
+  .programme-part {
     animation: none;
   }
 }
 
-/* Archive marquee (Past Nights): the track holds two copies of the list
-   back to back, and translating by exactly -50% loops it seamlessly. */
-@keyframes marquee-rtl {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-50%);
-  }
+/* Tibeb: the woven border of Ethiopian cloth, the same kind that frames
+   the club's printed shelf sheets. A repeating band between sections. */
+.tibeb {
+  height: 1.25rem;
+  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='48' height='20' viewBox='0 0 48 20'><rect width='48' height='20' fill='%232b1b12'/><rect y='2' width='48' height='1.5' fill='%23b8863b'/><rect y='16.5' width='48' height='1.5' fill='%23b8863b'/><path d='M12 4.5 17.5 10 12 15.5 6.5 10Z' fill='%23b8863b'/><path d='M12 7.5 14.5 10 12 12.5 9.5 10Z' fill='%237a2e1d'/><path d='M36 4.5 41.5 10 36 15.5 30.5 10Z' fill='%237a2e1d'/><path d='M36 7.5 38.5 10 36 12.5 33.5 10Z' fill='%23f3ece1'/><path d='M24 8 26 10 24 12 22 10Z M0 8 2 10 0 12Z M48 8 46 10 48 12Z' fill='%23f3ece1'/></svg>");
+  background-repeat: repeat-x;
+  background-size: auto 100%;
 }
 
-.marquee-track {
-  animation: marquee-rtl 42s linear infinite;
+/* The past-nights row drifts on its own and steps by its arrows, so the
+   scrollbar is hidden; it still scrolls by touch and trackpad. */
+.no-scrollbar {
+  scrollbar-width: none;
 }
 
-.marquee-track:hover {
-  animation-play-state: paused;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .marquee-track {
-    animation: none;
-  }
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
 }

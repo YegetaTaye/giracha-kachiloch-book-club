@@ -1,34 +1,29 @@
 "use client";
 
 import { useLanguage } from "@/components/LanguageProvider";
-import { Reveal } from "@/components/Reveal";
-import { SectionHeading } from "@/components/SectionHeading";
+import { PageIntro } from "@/components/PageIntro";
 import { GuestCard } from "@/components/GuestCard";
 import { guests } from "@/content/guests";
 
+// Crops cycled down the masonry so neighbouring portraits never share a
+// height, which keeps the columns' edges ragged and irregular.
+const CROPS = ["aspect-[3/4]", "aspect-square", "aspect-[2/3]", "aspect-[4/5]", "aspect-[5/4]", "aspect-[3/5]", "aspect-[4/3]", "aspect-[5/7]"];
+
 export function GuestsContent() {
-  const { t, lang } = useLanguage();
+  const { t } = useLanguage();
 
   return (
-    <div className="mx-auto max-w-6xl px-5 py-16 sm:px-8 sm:py-24">
-      <Reveal className="max-w-2xl">
-        <SectionHeading
-          eyebrow={t.guestsPage.eyebrow}
-          am={t.guestsPage.heading}
-          en={lang === "am" ? "Writers & Poets" : undefined}
-        />
-        <p className="mt-5 font-body-en text-base leading-relaxed text-ink/70">
-          {t.guestsPage.intro}
-        </p>
-      </Reveal>
-
-      <div className="mt-14 grid grid-cols-2 gap-x-6 gap-y-14 sm:grid-cols-3 lg:grid-cols-4">
+    <>
+      <PageIntro title={t.guestsPage.heading} intro={t.guestsPage.intro} />
+      {/* Masonry: each portrait keeps its own proportions and the columns
+          pack them without gaps. */}
+      <ul className="mx-auto max-w-7xl columns-1 gap-8 px-4 py-14 sm:columns-2 sm:px-8 lg:columns-3 lg:py-20">
         {guests.map((guest, i) => (
-          <Reveal key={guest.slug} delay={(i % 4) * 90}>
-            <GuestCard guest={guest} />
-          </Reveal>
+          <li key={guest.slug} className="mb-12 break-inside-avoid">
+            <GuestCard guest={guest} crop={CROPS[i % CROPS.length]} />
+          </li>
         ))}
-      </div>
-    </div>
+      </ul>
+    </>
   );
 }

@@ -1,36 +1,23 @@
 import type { Metadata } from "next";
-import {
-  Playfair_Display,
-  Lora,
-  Noto_Serif_Ethiopic,
-  Noto_Sans_Ethiopic,
-} from "next/font/google";
+import { Archivo, Noto_Sans_Ethiopic } from "next/font/google";
 import "./globals.css";
 import { LanguageProvider } from "@/components/LanguageProvider";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { site } from "@/content/site";
 
-const playfair = Playfair_Display({
+// Both faces carry a width axis, so the display roles can run condensed and
+// heavy like the lettering on the club's posters, and body text at full width.
+const archivo = Archivo({
   subsets: ["latin"],
-  variable: "--font-playfair",
-  display: "swap",
-});
-
-const lora = Lora({
-  subsets: ["latin"],
-  variable: "--font-lora",
-  display: "swap",
-});
-
-const notoSerifEthiopic = Noto_Serif_Ethiopic({
-  subsets: ["ethiopic"],
-  variable: "--font-noto-serif-ethiopic",
+  axes: ["wdth"],
+  variable: "--font-archivo",
   display: "swap",
 });
 
 const notoSansEthiopic = Noto_Sans_Ethiopic({
   subsets: ["ethiopic"],
+  axes: ["wdth"],
   variable: "--font-noto-sans-ethiopic",
   display: "swap",
 });
@@ -58,12 +45,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="am"
-      className={`${playfair.variable} ${lora.variable} ${notoSerifEthiopic.variable} ${notoSansEthiopic.variable} h-full antialiased`}
+      className={`${archivo.variable} ${notoSansEthiopic.variable} h-full antialiased`}
     >
-      <body className="flex min-h-full flex-col bg-parchment font-body-en text-ink">
-        <noscript>
-          <style>{`.reveal { opacity: 1 !important; }`}</style>
-        </noscript>
+      <body className="flex min-h-full flex-col bg-parchment font-body text-ink">
         <LanguageProvider>
           <Header />
           <main className="flex-1">{children}</main>

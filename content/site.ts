@@ -32,7 +32,9 @@ export const site = {
     // have a verified lat/lng for the venue — Google resolves the search.
     mapQuery: "Carmel Kitchen, Bishoftu, Ethiopia",
   },
-  email: "hello@girachabookclub.example",
+  // No public address yet. The email channel on the home page and footer
+  // only renders once this is set to a real address.
+  email: undefined as string | undefined,
   social: {
     instagram: "https://instagram.com/giracha.bookclub",
     telegram: "https://t.me/girachabookclub",
