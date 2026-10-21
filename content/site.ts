@@ -9,6 +9,31 @@ export const site = {
   // unset, Next.js falls back to the deployment URL on Vercel and to
   // http://localhost:3000 in dev (it warns about this during `next build`).
   url: process.env.NEXT_PUBLIC_SITE_URL,
+  // Search-facing copy: what someone searching in Amharic or English would
+  // type to find the club. Leads with the guest-writer discussions, the core
+  // of a night, and the town.
+  seo: {
+    titleEn: "Book Club & Literary Nights in Bishoftu, Ethiopia",
+    descriptionEn:
+      "Giracha Kachiloch (ግራጫ ቃጭሎች) is a reading house in Bishoftu, Ethiopia. Ethiopian writers and poets sit with the audience in open discussion, members read poems and their own writing, and the shelf lends books to members.",
+    keywords: [
+      "Giracha Kachiloch",
+      "ግራጫ ቃጭሎች",
+      "የንባብ ቤት",
+      "book club Bishoftu",
+      "Bishoftu book club",
+      "Debre Zeit book club",
+      "Ethiopian book club",
+      "Amharic poetry",
+      "Amharic literature",
+      "Ethiopian writers",
+      "poetry night Ethiopia",
+      "literary events Bishoftu",
+      "ቢሾፍቱ",
+      "ግጥም",
+      "ሥነ ጽሑፍ",
+    ],
+  },
   // Real lockup taken from the club's own logo/posters.
   taglineAm: "የንባብ ቤት",
   taglineEn: "House of Reading",
@@ -52,3 +77,22 @@ export const site = {
     themeEn: "Writers and poets, gathering again",
   },
 };
+
+/**
+ * Absolute origin for canonical URLs, the sitemap and structured data. Uses
+ * NEXT_PUBLIC_SITE_URL, then Vercel's production domain, then localhost.
+ */
+export const siteUrl = (
+  site.url ??
+  (process.env.VERCEL_PROJECT_PRODUCTION_URL
+    ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
+    : "http://localhost:3000")
+).replace(/\/$/, "");
+
+/** Public routes, in the order the sitemap lists them. */
+export const routes = [
+  { path: "/", priority: 1, changeFrequency: "weekly" },
+  { path: "/guests", priority: 0.8, changeFrequency: "monthly" },
+  { path: "/books", priority: 0.6, changeFrequency: "monthly" },
+  { path: "/support", priority: 0.5, changeFrequency: "yearly" },
+] as const;

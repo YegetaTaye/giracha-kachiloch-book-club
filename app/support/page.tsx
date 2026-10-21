@@ -1,11 +1,11 @@
-import type { Metadata } from "next";
 import { SupportContent } from "@/components/SupportContent";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Support the House",
-  description:
-    "Support Giracha Kachiloch with financial contributions, skills, books, or production materials.",
-};
+const title = "Support the House";
+const description =
+  "Help keep Giracha Kachiloch, a community reading house in Bishoftu, Ethiopia, running: give money, books, skills or production help.";
+
+export const metadata = pageMetadata(title, description, "/support");
 
 export default function SupportPage() {
   return <SupportContent />;
