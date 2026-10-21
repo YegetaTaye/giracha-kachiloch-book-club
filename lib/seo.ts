@@ -10,12 +10,22 @@ export const openGraphBase = {
   alternateLocale: ["en_US"],
 } satisfies Metadata["openGraph"];
 
-/** Title, description, canonical URL and Open Graph tags for one route. */
+// A route that sets openGraph no longer inherits app/opengraph-image.jpg, so
+// child routes name it explicitly.
+const shareImage = {
+  url: "/opengraph-image.jpg",
+  width: 1200,
+  height: 630,
+  alt: `${site.nameAm} — ${site.nameEn}, ${site.taglineEn}: a reading house in ${site.location.town}, ${site.location.country}.`,
+};
+
+/** Title, description, canonical URL and share tags for one route. */
 export function pageMetadata(title: string, description: string, path: string): Metadata {
   return {
     title,
     description,
     alternates: { canonical: path },
-    openGraph: { ...openGraphBase, title, description, url: path },
+    openGraph: { ...openGraphBase, title, description, url: path, images: [shareImage] },
+    twitter: { card: "summary_large_image", title, description, images: [shareImage] },
   };
 }
