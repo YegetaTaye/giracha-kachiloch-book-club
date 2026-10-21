@@ -80,6 +80,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="am"
+      // Lets Next.js drop the smooth scrolling from globals.css while it
+      // changes route, so every new page opens at the very top.
+      data-scroll-behavior="smooth"
       className={`${archivo.variable} ${notoSansEthiopic.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col bg-parchment font-body text-ink">

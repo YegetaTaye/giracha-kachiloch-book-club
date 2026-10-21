@@ -62,7 +62,7 @@ export const site = {
   email: undefined as string | undefined,
   social: {
     instagram: "https://instagram.com/giracha.bookclub",
-    telegram: "https://t.me/girachabookclub",
+    telegram: "https://t.me/GKRH712",
   },
   // A specific next date isn't confirmed yet — this only states the usual
   // recurring pattern seen across past posters (Saturdays, 11:30, at the

@@ -33,16 +33,19 @@ export function SupportContent() {
               {support.cta}
             </a>
           </div>
-          {/* A real night's poster: what support keeps happening. */}
-          <Image
-            src="/images/guests/hiwot-emishaw.jpg"
-            alt=""
-            width={1280}
-            height={1280}
-            sizes="(min-width: 1024px) 40vw, 92vw"
-            className="aspect-square w-full self-center rounded-[1.75rem] object-cover lg:col-span-5"
-            priority
-          />
+          {/* A real night in the room: what support keeps happening. */}
+          <figure className="self-center lg:col-span-5">
+            <Image
+              src="/images/scenes/venue-ambience.jpg"
+              alt={support.photoAlt}
+              width={800}
+              height={800}
+              sizes="(min-width: 1024px) 40vw, 92vw"
+              className="aspect-square w-full rounded-[1.75rem] object-cover"
+              priority
+            />
+            <figcaption className="mt-3 text-sm text-sand">{support.photoCaption}</figcaption>
+          </figure>
         </div>
         <Tibeb />
       </section>

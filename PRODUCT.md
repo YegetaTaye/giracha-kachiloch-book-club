@@ -36,7 +36,7 @@ A recurring, in-person literary night in Bishoftu run by and for its community, 
 
 - Next.js site with Amharic/English toggle; content lives in `content/*.ts` so the owner can edit without touching design.
 - **Undecided or unknown:** next gathering date, entry cost (do not claim free entry), a public email address, exact past-night dates, per-book bibliographic data (titles are currently only on the printed shelf sheets).
-- Telegram and Instagram handles in `content/site.ts` are unverified; the support page links a personal Telegram account.
+- The club Telegram channel is https://t.me/GKRH712 (confirmed by the owner, 2026-10-22). The Instagram handle in `content/site.ts` is unverified; the support page links a personal Telegram account.
 
 ## Brand Commitments
 

@@ -36,6 +36,18 @@ export type Guest = {
 // real copy is supplied — replace rather than invent them.
 export const guests: Guest[] = [
   {
+    slug: "zebib-melke",
+    nameAm: "ዘቢብ መልኬ",
+    nameEn: "Zebib Melke",
+    roleAm: "ደራሲ",
+    roleEn: "Author",
+    image: "/images/portraits-web/zebib-melke.jpg",
+    poster: "/images/guests/zebib-melke.jpg",
+    imageSource:
+      "https://media.licdn.com/dms/image/v2/D4D03AQErJe7FNH2yGA/profile-displayphoto-scale_400_400/B4DZwEpUEyHYAk-/0/1769604466917",
+    imageConfidence: "high",
+  },
+  {
     slug: "bedilu-wakjira",
     nameAm: "ዶ/ር በድሉ ዋቅጅራ",
     nameEn: "Dr. Bedilu Wakjira",

@@ -82,10 +82,12 @@ export const dictionary = {
       viewFull: "በሙሉ መጠን ይመልከቱ",
     },
     supportPage: {
-      heading: "አብረን እንገንባ",
+      heading: "የንባብ ቤታችንን ይደግፉ",
       intro:
         "ግራጫ ቃጭሎች ለማኅበረሰቡ የተፈጠረ የማኅበረሰብ ተነሳሽነት ነው። ለንባብ፣ ለፈጠራ፣ ለባህል እና ለጋራ ውይይት የሚያምኑ ሰዎች በሚሰጡት ልግስና፣ ጊዜ፣ ክህሎት፣ መጽሐፍ እና ሀሳብ እንደጋፋለን።",
       note: "ሁሉም ድጋፍ ትርጉም አለው።",
+      photoAlt: "በካርሜል ኪችን ከእንግዳ ደራሲ ጋር ውይይት የሚያደርጉ ታዳሚዎች የሞሉት ክፍል",
+      photoCaption: "ድጋፍዎ የሚያስቀጥለው ይህንን ነው፤ በቢሾፍቱ፣ ካርሜል ኪችን አንድ ምሽት።",
       cta: "በቴሌግራም መልዕክት ይላኩ",
       waysHeading: "የመደገፊያ መንገዶች",
       ways: [
@@ -207,6 +209,8 @@ export const dictionary = {
       intro:
         "Giracha Kachiloch is a community initiative created for the community. We depend on the generosity, time, skills, books, and ideas of people who believe in reading, creativity, culture, and shared conversation.",
       note: "Every kind of support matters.",
+      photoAlt: "A full room in discussion with a guest writer at Carmel Kitchen",
+      photoCaption: "This is what your support keeps going: a night at Carmel Kitchen, Bishoftu.",
       cta: "Message us on Telegram",
       waysHeading: "Ways to help",
       ways: [
