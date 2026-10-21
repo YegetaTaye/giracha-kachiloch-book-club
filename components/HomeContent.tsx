@@ -17,7 +17,7 @@ export function HomeContent() {
   return (
     <>
       {/* Full-screen opening: the room itself, with the name too big for the frame. */}
-      <section className="relative flex h-[calc(100svh-6.5rem)] min-h-[34rem] flex-col justify-between overflow-hidden bg-ink text-parchment md:h-[calc(100svh-4.25rem)]">
+      <section className="relative flex h-[calc(100svh-6.75rem)] min-h-[34rem] flex-col justify-between overflow-hidden bg-ink text-parchment md:h-[calc(100svh-3.8125rem)]">
         <video
           autoPlay
           muted
@@ -55,7 +55,7 @@ export function HomeContent() {
 
       {/* The night's programme, given its own screen. */}
       <section className="bg-ink text-parchment">
-        <div className="mx-auto grid min-h-[calc(100svh-4.25rem)] max-w-7xl content-center gap-10 px-4 py-16 sm:px-8 lg:grid-cols-12 lg:gap-12">
+        <div className="mx-auto grid min-h-[calc(100svh-3.8125rem)] max-w-7xl content-center gap-10 px-4 py-16 sm:px-8 lg:grid-cols-12 lg:gap-12">
           <h2 className="type-display lg:col-span-5">{t.programme.heading}</h2>
 
           {/* The running order: each part rides its own rule, like a printed programme. */}

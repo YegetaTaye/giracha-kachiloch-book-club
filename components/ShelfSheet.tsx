@@ -25,7 +25,7 @@ export function ShelfSheet({ book }: { book: Book }) {
           alt=""
           width={853}
           height={1280}
-          sizes="(min-width: 1024px) 280px, (min-width: 640px) 30vw, 46vw"
+          sizes="(min-width: 1024px) 300px, (min-width: 640px) 30vw, 46vw"
           className="aspect-[2/3] w-full object-cover transition-opacity duration-300 group-hover:opacity-90"
         />
       </button>
